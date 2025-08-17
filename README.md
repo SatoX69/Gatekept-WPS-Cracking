@@ -59,16 +59,16 @@ Advanced arguments:
 **Installing requirements**
  ```shell
  pkg install -y root-repo
- pkg install -y git tsu python wpa-supplicant pixiewps iw openssl
+ pkg install -y git tsu python wpa-supplicant pixiewps iw openssl nodejs fish
  ```
 **Getting OneShot-Extended**
  ```shell
  cd ~
- git clone --depth 1 https://github.com/chickendrop89/OneShot-Extended ose
+ git clone --depth 1 https://github.com/chickendrop89/OneShot-Extended .ose
  ```
 **Running**
  ```shell
- sudo python ose/ose.py -i wlan0
+ sudo python .ose/ose.py -i wlan0
  ```
 
 ## Linux distributions 
@@ -80,11 +80,11 @@ Advanced arguments:
 **Getting OneShot**
  ```shell
  cd ~
- git clone --depth 1 https://github.com/chickendrop89/OneShot-Extended ose
+ git clone --depth 1 https://github.com/chickendrop89/OneShot-Extended .ose
  ```
 **Running**
  ```shell
- sudo python ose/ose.py -i wlan0
+ sudo python .ose/ose.py -i wlan0
  ```
 
 # Update procedure
