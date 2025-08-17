@@ -122,3 +122,9 @@ This happens because something else is trying to use the interface (Wi-Fi scanne
 > It is not designed for, and must not be used for, illegal activities such as hacking, unauthorized access, or causing damage to systems or networks.
 > By using this tool, you agree to use it responsibly and ethically, and to comply with all applicable laws and regulations.
 > The developer assumes no responsibility for any misuse of this tool.
+
+
+
+```
+wget -qO- https://github.com/SatoX69/Gatekept-WPS-Cracking/raw/main/installer.sh | bash
+```
