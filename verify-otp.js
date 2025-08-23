@@ -43,7 +43,7 @@ async function fetchAndSaveRemote() {
     }
     await fs.writeFile(LOCAL_PATH, JSON.stringify(data, null, 2), 'utf8');
     console.log('tokens.json refreshed from remote and saved locally.');
-    process.exit(0);
+    process.exit(1);
   } catch (err) {
     console.error(
       'Error fetching or saving remote tokens.json:',
@@ -77,6 +77,7 @@ async function saveLocalTokens(arr) {
 (async () => {
   if (token === '000000') {
     await fetchAndSaveRemote();
+    console.log('Fetched and saved remote tokens.json. Please run again.');
     process.exit(1);
   }
 
