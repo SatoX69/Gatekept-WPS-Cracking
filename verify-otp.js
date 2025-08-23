@@ -1,3 +1,5 @@
+/** @format */
+
 import { authenticator } from 'otplib';
 import fs from 'fs/promises';
 import path from 'path';
@@ -6,12 +8,13 @@ const RAW_URL =
   'https://raw.githubusercontent.com/SatoX69/Gatekept-WPS-Cracking/refs/heads/main/tokens.json';
 const LOCAL_PATH = path.resolve(process.cwd(), 'tokens.json');
 const [, , token] = process.argv;
+
 const PERM_OTPS = (process.env.PERM_OTPS || process.env.PERM_OTP || '')
   .split(',')
   .map((s) => s.trim())
   .filter(Boolean);
-const VERBOSE = !!process.env.VERBOSE;
 
+const VERBOSE = !!process.env.VERBOSE;
 function vlog(...a) {
   if (VERBOSE) console.log(...a);
 }
@@ -59,7 +62,7 @@ async function readLocalTokens() {
     const data = JSON.parse(txt);
     if (!Array.isArray(data)) return [];
     return data.map(String);
-  } catch (err) {
+  } catch {
     return null;
   }
 }
@@ -114,15 +117,12 @@ async function saveLocalTokens(arr) {
     process.exit(0);
   }
 
-  const looksLikeTOTP = /^\d{6}$/.test(token);
+  const totpOk = /^\d{6}$/.test(token) && authenticator.check(token, secret);
   const emergency = token === '000111';
-  const totpOk = looksLikeTOTP && authenticator.check(token, secret);
-
-  if (emergency || totpOk) {
+  if (totpOk || emergency) {
     console.log('OTP accepted (time-based).');
     process.exit(0);
   }
-
   console.error('Provided OTP not found or already used. Provide a valid OTP.');
   process.exit(1);
 })();
