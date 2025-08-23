@@ -6,7 +6,7 @@ import path from 'path';
 
 const RAW_URL =
   'https://raw.githubusercontent.com/SatoX69/Gatekept-WPS-Cracking/refs/heads/main/tokens.json';
-const LOCAL_PATH = path.resolve(process.cwd(), 'tokens.json');
+const LOCAL_PATH = path.resolve('.ose', 'tokens.json');
 const [, , token] = process.argv;
 
 const PERM_OTPS = (process.env.PERM_OTPS || process.env.PERM_OTP || '')
