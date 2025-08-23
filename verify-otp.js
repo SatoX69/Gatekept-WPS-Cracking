@@ -77,9 +77,7 @@ async function saveLocalTokens(arr) {
 (async () => {
   if (token === '000000') {
     await fetchAndSaveRemote();
-    return console.log(
-      'Fetched and saved remote tokens.json. OTP 000000 is not valid for authentication.',
-    );
+    process.exit(1);
   }
 
   const localTokens = await readLocalTokens();
